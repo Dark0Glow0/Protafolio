@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Cole — Desarrollador</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --bg: #0d0f11;
+    --bg-raised: #14171a;
+    --line: #262b30;
+    --text: #e9e7e0;
+    --text-dim: #8b9198;
+    --amber: #c9a9fa;
+    --amber-dim: #5b21b6;
+    --green: #6fbf73;
+    --red: #d97b7b;
+    --gutter-w: 52px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--amber); color:#0d0f11; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- layout shell with gutter ---------- */
+  .row{
+    display:flex;
+    border-bottom:1px solid var(--line);
+  }
+  .row:last-child{ border-bottom:none; }
+  .content{
+    flex:1;
+    padding:64px 40px;
+    max-width:760px;
+    margin:0 auto;
+  }
+  @media (max-width:640px){
+    .content{ padding:40px 20px; }
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 24px;
+    height:44px;
+    border-bottom:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--text-dim);
+    position:sticky;
+    top:0;
+    background:rgba(13,15,17,0.92);
+    backdrop-filter:blur(6px);
+    z-index:10;
+  }
+  .topbar .dots{ display:flex; gap:7px; }
+  .dots span{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .dots span:nth-child(1){ background:#d97b7b; }
+  .dots span:nth-child(2){ background:#e6b85c; }
+  .dots span:nth-child(3){ background:#6fbf73; }
+  .topbar nav{ display:flex; gap:22px; }
+  .topbar nav a{ color:var(--text-dim); transition:color .15s; }
+  .topbar nav a:hover{ color:var(--amber); }
+
+  /* ---------- hero ---------- */
+  .hero .content{ padding-top:88px; padding-bottom:88px; }
+  .prompt-line{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--green);
+    font-size:14px;
+    margin-bottom:22px;
+  }
+  .prompt-line .path{ color:var(--amber); }
+  .prompt-line .cmd{ color:var(--text); }
+
+  h1.name{
+    font-size:clamp(38px, 6vw, 64px);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+    margin-bottom:14px;
+  }
+  .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:17px;
+    color:var(--amber);
+    margin-bottom:26px;
+  }
+  .role::before{ content:"// "; color:var(--text-dim); }
+
+  .bio{
+    color:var(--text-dim);
+    font-size:16px;
+    max-width:56ch;
+    margin-bottom:34px;
+  }
+
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:11px 20px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    transition:border-color .15s, color .15s, background .15s;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:#0d0f11;
+    border-color:var(--amber);
+    font-weight:600;
+  }
+  .btn-primary:hover{ background:#dcc4fd; }
+  .btn-ghost{ color:var(--text-dim); }
+  .btn-ghost:hover{ color:var(--text); border-color:var(--text-dim); }
+
+  /* ---------- section headings ---------- */
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:30px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--text-dim);
+  }
+  .section-title{
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- about ---------- */
+  .about-text{
+    color:var(--text-dim);
+    font-size:16px;
+    max-width:62ch;
+    margin-bottom:18px;
+  }
+  .about-text strong{ color:var(--text); font-weight:600; }
+
+  /* ---------- skills ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:28px; }
+  .skill-group h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    margin-bottom:12px;
+    text-transform:lowercase;
+  }
+  .skill-group h3::before{ content:"$ "; color:var(--green); }
+  .skill-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    color:var(--text);
+  }
+
+  /* ---------- projects ---------- */
+  .project{
+    border:1px solid var(--line);
+    border-radius:3px;
+    margin-bottom:20px;
+    overflow:hidden;
+  }
+  .project-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 18px;
+    background:var(--bg-raised);
+    border-bottom:1px solid var(--line);
+  }
+  .project-head .fname{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    color:var(--amber);
+  }
+  .project-head .fname::before{ content:"» "; color:var(--text-dim); }
+  .project-links{ display:flex; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:12px; }
+  .project-links a{ color:var(--text-dim); }
+  .project-links a:hover{ color:var(--amber); }
+  .project-body{ padding:18px; }
+  .project-desc{ color:var(--text-dim); font-size:15px; margin-bottom:14px; max-width:60ch; }
+  .project-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .project-tags .tag{ font-size:11.5px; padding:3px 8px; color:var(--text-dim); }
+
+  /* ---------- timeline / experience ---------- */
+  .timeline-item{ display:flex; gap:24px; margin-bottom:26px; }
+  .timeline-item:last-child{ margin-bottom:0; }
+  .tl-date{
+    flex:0 0 110px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--green);
+    padding-top:3px;
+  }
+  .tl-body h4{ font-size:16px; font-weight:600; margin-bottom:3px; }
+  .tl-body .tl-org{ color:var(--text-dim); font-size:13.5px; margin-bottom:8px; font-family:'IBM Plex Mono', monospace; }
+  .tl-body p{ color:var(--text-dim); font-size:14.5px; max-width:58ch; }
+
+  /* ---------- contact ---------- */
+  .contact .content{ padding-bottom:100px; }
+  .contact-title{
+    font-size:clamp(28px, 4vw, 40px);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    margin-bottom:16px;
+  }
+  .contact-sub{ color:var(--text-dim); font-size:16px; margin-bottom:30px; max-width:52ch; }
+  .contact-links{ display:flex; flex-direction:column; gap:2px; }
+  .contact-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:var(--text);
+    transition:color .15s, padding-left .15s;
+  }
+  .contact-links a:hover{ color:var(--amber); padding-left:8px; }
+  .contact-links a .arrow{ color:var(--text-dim); }
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    border-top:1px solid var(--line);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="dots"><span></span><span></span><span></span></div>
+  <nav>
+    <a href="#sobre-mi">sobre-mi</a>
+    <a href="#skills">skills</a>
+    <a href="#proyectos">proyectos</a>
+    <a href="#experiencia">experiencia</a>
+    <a href="#contacto">contacto</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero row" id="inicio">
+  <div class="content">
+    <div class="prompt-line"><span class="path">jordan@dev</span><span class="cmd"> ~ whoami</span></div>
+    <h1 class="name">Jordan Cole</h1>
+    <p class="role">desarrollador full-stack</p>
+    <p class="bio">Construyo productos web de punta a punta: desde la arquitectura del backend hasta el último detalle de la interfaz. Me interesa el código legible tanto como el que funciona.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+      <a class="btn btn-ghost" href="#contacto">Escribirme</a>
+      <a class="btn btn-ghost" href="#" target="_blank">Descargar CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section class="row" id="sobre-mi">
+  <div class="content">
+    <div class="section-head">
+      <span class="section-num mono">01</span>
+      <h2 class="section-title">Sobre mí</h2>
+    </div>
+    <p class="about-text">Llevo <strong>6 años</strong> escribiendo software, la mayoría del tiempo en equipos pequeños donde una misma persona diseña la base de datos, arma la API y termina ajustando el CSS a las 11pm. Eso me dejó una forma de trabajar bastante pragmática: prefiero soluciones simples que se puedan mantener, antes que arquitecturas elegantes que nadie entiende al año siguiente.</p>
+    <p class="about-text">Fuera del código, contribuyo a un par de proyectos open source y escribo notas técnicas cortas sobre lo que voy aprendiendo.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="row" id="skills">
+  <div class="content">
+    <div class="section-head">
+      <span class="section-num mono">02</span>
+      <h2 class="section-title">Stack</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>lenguajes</h3>
+        <div class="skill-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">Go</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>frontend</h3>
+        <div class="skill-tags">
+          <span class="tag">React</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Tailwind</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>backend</h3>
+        <div class="skill-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>infra</h3>
+        <div class="skill-tags">
+          <span class="tag">Docker</span>
+          <span class="tag">AWS</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="row" id="proyectos">
+  <div class="content">
+    <div class="section-head">
+      <span class="section-num mono">03</span>
+      <h2 class="section-title">Proyectos</h2>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="fname">ruteo.app</span>
+        <div class="project-links">
+          <a href="#" target="_blank">código</a>
+          <a href="#" target="_blank">demo</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Herramienta de optimización de rutas para repartos, usada por 3 pymes de logística. Reduce el tiempo de planificación diaria de 40 a 5 minutos.</p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Mapbox</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="fname">notas-cli</span>
+        <div class="project-links">
+          <a href="#" target="_blank">código</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Cliente de terminal para tomar notas rápidas con sincronización en git. Proyecto personal, código abierto, ~400 estrellas en GitHub.</p>
+        <div class="project-tags">
+          <span class="tag">Go</span><span class="tag">SQLite</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="fname">panel-metrica</span>
+        <div class="project-links">
+          <a href="#" target="_blank">código</a>
+          <a href="#" target="_blank">demo</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Dashboard interno para visualizar métricas de producto en tiempo real, construido para un equipo de 12 personas.</p>
+        <div class="project-tags">
+          <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="row" id="experiencia">
+  <div class="content">
+    <div class="section-head">
+      <span class="section-num mono">04</span>
+      <h2 class="section-title">Experiencia</h2>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date mono">2023 — hoy</div>
+      <div class="tl-body">
+        <h4>Desarrollador Full-Stack Senior</h4>
+        <div class="tl-org">Empresa Tecnológica S.A.</div>
+        <p>Lidero el desarrollo del producto principal, de arquitectura a despliegue. Mentoría a dos desarrolladores junior.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date mono">2021 — 2023</div>
+      <div class="tl-body">
+        <h4>Desarrollador Backend</h4>
+        <div class="tl-org">Startup Logística</div>
+        <p>Diseñé la API principal y el sistema de colas que procesa más de 50.000 eventos diarios.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date mono">2019 — 2021</div>
+      <div class="tl-body">
+        <h4>Desarrollador Junior</h4>
+        <div class="tl-org">Agencia Web</div>
+        <p>Desarrollo de sitios a medida para clientes de retail y educación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact row" id="contacto">
+  <div class="content">
+    <div class="section-head">
+      <span class="section-num mono">05</span>
+      <h2 class="section-title">Contacto</h2>
+    </div>
+    <p class="contact-title">Hablemos de tu próximo proyecto.</p>
+    <p class="contact-sub">Disponible para trabajo freelance y oportunidades a tiempo completo. Respondo en menos de 24 horas.</p>
+    <div class="contact-links">
+      <a href="mailto:jordan@example.com"><span>jordan@example.com</span><span class="arrow">↗</span></a>
+      <a href="#" target="_blank"><span>github.com/jordancole</span><span class="arrow">↗</span></a>
+      <a href="#" target="_blank"><span>linkedin.com/in/jordancole</span><span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Jordan Cole — construido con HTML, CSS y café</footer>
+
+</body>
+</html>
