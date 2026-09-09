@@ -260,6 +260,114 @@
   }
 
   :focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+
+  /* ---------- project card as trigger ---------- */
+  .project{ cursor:pointer; transition:border-color .15s; }
+  .project:hover{ border-color:var(--amber-dim); }
+  .project-head .fname{ cursor:pointer; }
+  .project-open-hint{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--text-dim);
+  }
+  .project-open-hint::before{ content:"↗ "; }
+
+  /* ---------- project modal ---------- */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(13,15,17,0.82);
+    backdrop-filter:blur(4px);
+    z-index:100;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .modal-overlay.open{ display:flex; }
+
+  .modal-box{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:4px;
+    max-width:640px;
+    width:100%;
+    max-height:86vh;
+    overflow-y:auto;
+    animation:modalIn .18s ease;
+  }
+  @keyframes modalIn{
+    from{ opacity:0; transform:translateY(8px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .modal-head .fname{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    color:var(--amber);
+  }
+  .modal-head .fname::before{ content:"» "; color:var(--text-dim); }
+  .modal-close{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--text-dim);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:4px 9px;
+    background:none;
+    cursor:pointer;
+    transition:color .15s, border-color .15s;
+  }
+  .modal-close:hover{ color:var(--red); border-color:var(--red); }
+
+  .modal-body{ padding:18px; }
+  .modal-desc{ color:var(--text-dim); font-size:15px; margin-bottom:16px; }
+  .modal-desc strong{ color:var(--text); font-weight:600; }
+
+  /* continuous photo carousel */
+  .carousel{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:3px;
+    margin-bottom:16px;
+    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+            mask-image:linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  }
+  .carousel-track{
+    display:flex;
+    gap:10px;
+    width:max-content;
+    animation:carouselScroll 22s linear infinite;
+  }
+  .carousel:hover .carousel-track{ animation-play-state:paused; }
+  .carousel-track img{
+    height:150px;
+    width:220px;
+    object-fit:cover;
+    border-radius:2px;
+    display:block;
+    flex:0 0 auto;
+  }
+  @keyframes carouselScroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .carousel-track{ animation:none; }
+  }
+
+  .modal-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+  .modal-links{ display:flex; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; }
+  .modal-links a{ color:var(--text-dim); }
+  .modal-links a:hover{ color:var(--amber); }
 </style>
 </head>
 <body>
@@ -338,12 +446,12 @@
       <h2 class="section-title">Proyectos</h2>
     </div>
 
-    <div class="project">
+    <div class="project" onclick="openModal('modal-ruteo')">
       <div class="project-head">
         <span class="fname">ruteo.app</span>
         <div class="project-links">
-          <a href="#" target="_blank">código</a>
-          <a href="#" target="_blank">demo</a>
+          <a href="#" target="_blank" onclick="event.stopPropagation()">código</a>
+          <a href="#" target="_blank" onclick="event.stopPropagation()">demo</a>
         </div>
       </div>
       <div class="project-body">
@@ -351,14 +459,15 @@
         <div class="project-tags">
           <span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Mapbox</span>
         </div>
+        <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project" onclick="openModal('modal-notas')">
       <div class="project-head">
         <span class="fname">notas-cli</span>
         <div class="project-links">
-          <a href="#" target="_blank">código</a>
+          <a href="#" target="_blank" onclick="event.stopPropagation()">código</a>
         </div>
       </div>
       <div class="project-body">
@@ -366,15 +475,16 @@
         <div class="project-tags">
           <span class="tag">Go</span><span class="tag">SQLite</span>
         </div>
+        <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project" onclick="openModal('modal-panel')">
       <div class="project-head">
         <span class="fname">panel-metrica</span>
         <div class="project-links">
-          <a href="#" target="_blank">código</a>
-          <a href="#" target="_blank">demo</a>
+          <a href="#" target="_blank" onclick="event.stopPropagation()">código</a>
+          <a href="#" target="_blank" onclick="event.stopPropagation()">demo</a>
         </div>
       </div>
       <div class="project-body">
@@ -382,10 +492,102 @@
         <div class="project-tags">
           <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
         </div>
+        <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- MODALES DE PROYECTO -->
+<div class="modal-overlay" id="modal-ruteo" onclick="closeOnBackdrop(event, 'modal-ruteo')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span class="fname">ruteo.app</span>
+      <button class="modal-close" onclick="closeModal('modal-ruteo')">cerrar ✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+1" alt="Captura de ruteo.app 1">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+2" alt="Captura de ruteo.app 2">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+3" alt="Captura de ruteo.app 3">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+4" alt="Captura de ruteo.app 4">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+1" alt="Captura de ruteo.app 1" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+2" alt="Captura de ruteo.app 2" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+3" alt="Captura de ruteo.app 3" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=ruteo.app+4" alt="Captura de ruteo.app 4" aria-hidden="true">
+        </div>
+      </div>
+      <p class="modal-desc">Herramienta de optimización de rutas para repartos, usada por <strong>3 pymes de logística</strong>. Calcula el orden óptimo de entregas considerando ventanas horarias, capacidad del vehículo y tráfico en tiempo real. Reduce el tiempo de planificación diaria de 40 a 5 minutos y ha bajado el kilometraje recorrido en promedio un 18%.</p>
+      <div class="modal-tags">
+        <span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Mapbox</span>
+      </div>
+      <div class="modal-links">
+        <a href="#" target="_blank">ver código ↗</a>
+        <a href="#" target="_blank">ver demo ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-notas" onclick="closeOnBackdrop(event, 'modal-notas')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span class="fname">notas-cli</span>
+      <button class="modal-close" onclick="closeModal('modal-notas')">cerrar ✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+1" alt="Captura de notas-cli 1">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+2" alt="Captura de notas-cli 2">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+3" alt="Captura de notas-cli 3">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+1" alt="Captura de notas-cli 1" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+2" alt="Captura de notas-cli 2" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+3" alt="Captura de notas-cli 3" aria-hidden="true">
+        </div>
+      </div>
+      <p class="modal-desc">Cliente de terminal para tomar notas rápidas con <strong>sincronización en git</strong>. Cada nota se guarda como un archivo markdown versionado, así que el historial completo de cambios queda disponible sin depender de ningún servidor propio. Proyecto personal, código abierto, ~400 estrellas en GitHub.</p>
+      <div class="modal-tags">
+        <span class="tag">Go</span><span class="tag">SQLite</span>
+      </div>
+      <div class="modal-links">
+        <a href="#" target="_blank">ver código ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-panel" onclick="closeOnBackdrop(event, 'modal-panel')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span class="fname">panel-metrica</span>
+      <button class="modal-close" onclick="closeModal('modal-panel')">cerrar ✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+1" alt="Captura de panel-metrica 1">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+2" alt="Captura de panel-metrica 2">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+3" alt="Captura de panel-metrica 3">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+4" alt="Captura de panel-metrica 4">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+1" alt="Captura de panel-metrica 1" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+2" alt="Captura de panel-metrica 2" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+3" alt="Captura de panel-metrica 3" aria-hidden="true">
+          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+4" alt="Captura de panel-metrica 4" aria-hidden="true">
+        </div>
+      </div>
+      <p class="modal-desc">Dashboard interno para visualizar métricas de producto en <strong>tiempo real</strong>, construido para un equipo de 12 personas. Integra eventos vía WebSockets y permite armar paneles personalizados por equipo, con alertas automáticas cuando una métrica se sale de rango.</p>
+      <div class="modal-tags">
+        <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
+      </div>
+      <div class="modal-links">
+        <a href="#" target="_blank">ver código ↗</a>
+        <a href="#" target="_blank">ver demo ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- EXPERIENCIA -->
 <section class="row" id="experiencia">
@@ -443,5 +645,26 @@
 
 <footer>© 2026 Benjamin Bravo — construido con HTML, CSS y café</footer>
 
+
+<script>
+  function openModal(id){
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id){
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeOnBackdrop(evt, id){
+    if(evt.target.id === id) closeModal(id);
+  }
+  document.addEventListener('keydown', function(evt){
+    if(evt.key === 'Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(function(m){
+        closeModal(m.id);
+      });
+    }
+  });
+</script>
 </body>
 </html>
