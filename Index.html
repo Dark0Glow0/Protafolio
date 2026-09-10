@@ -348,13 +348,15 @@
     animation:carouselScroll 22s linear infinite;
   }
   .carousel:hover .carousel-track{ animation-play-state:paused; }
-  .carousel-track img{
+  .carousel-track img,
+  .carousel-track video{
     height:150px;
     width:220px;
     object-fit:cover;
     border-radius:2px;
     display:block;
     flex:0 0 auto;
+    background:#000;
   }
   @keyframes carouselScroll{
     from{ transform:translateX(0); }
@@ -389,7 +391,7 @@
     <div class="prompt-line"><span class="path">benjamin@dev</span><span class="cmd"> ~ whoami</span></div>
     <h1 class="name">Benjamin Bravo</h1>
     <p class="role">Ing. En Realidad Virtual y Diseño de Juegos Digitales</p>
-    <p class="bio">Construyo productos web de punta a punta: desde la arquitectura del backend hasta el último detalle de la interfaz. Me interesa el código legible tanto como el que funciona.</p>
+    <p class="bio"><strong>experiencias para un futuro:</strong> Programación, diseño y creatividad en un mismo lugar. Me gusta llevar las ideas desde la primera línea de código hasta una experiencia completa, cuidando cada detalle del proceso.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
       <a class="btn btn-ghost" href="#contacto">Escribirme</a>
@@ -405,8 +407,9 @@
       <span class="section-num mono">01</span>
       <h2 class="section-title">Sobre mí</h2>
     </div>
-    <p class="about-text">Llevo <strong>6 años</strong> escribiendo software, la mayoría del tiempo en equipos pequeños donde una misma persona diseña la base de datos, arma la API y termina ajustando el CSS a las 11pm. Eso me dejó una forma de trabajar bastante pragmática: prefiero soluciones simples que se puedan mantener, antes que arquitecturas elegantes que nadie entiende al año siguiente.</p>
-    <p class="about-text">Fuera del código, contribuyo a un par de proyectos open source y escribo notas técnicas cortas sobre lo que voy aprendiendo.</p>
+    <p class="about-text">Soy estudiante de <strong>4 años</strong> de Ingeniería en Realidad Virtual en la Universidad Bernardo O’Higgins, enfocado principalmente en programación, game design y desarrollo de videojuegos. También exploro el desarrollo Full Stack, trabajando tanto con backend como frontend.</p>
+    <p class="about-text">Me considero una persona prolija, organizada y detallista al programar. Me gusta mantener un código limpio y estructurado, buscando que cada sistema sea fácil de entender, mantener y mejorar.</p>
+    <p class="about-text">Además de desarrollar, disfruto liderar proyectos y convertir ideas en experiencias reales, siempre buscando aprender algo nuevo en el proceso.</p>
   </div>
 </section>
 
@@ -415,7 +418,7 @@
   <div class="content">
     <div class="section-head">
       <span class="section-num mono">02</span>
-      <h2 class="section-title">Stack</h2>
+      <h2 class="section-title">Skills</h2>
     </div>
     <div class="skill-groups">
       <div class="skill-group">
@@ -428,7 +431,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <h3>Graphic Motors</h3>
+        <h3>Motor Gráfico</h3>
         <div class="skill-tags">
           <span class="tag">Unity</span>
           <span class="tag">Unreal Engine</span>
@@ -451,7 +454,7 @@
         <span class="fname">Meant To Die</span>
       </div>
       <div class="project-body">
-        <p class="project-desc">Herramienta de optimización de rutas para repartos, usada por 3 pymes de logística. Reduce el tiempo de planificación diaria de 40 a 5 minutos.</p>
+        <p class="project-desc">Videojuego de terror psicológico y suspenso en primera persona indie creado el primer semestre en unity.</p>
         <div class="project-tags">
           <span class="tag">Unity</span><span class="tag">C#</span>
         </div>
@@ -461,32 +464,22 @@
 
     <div class="project" onclick="openModal('modal-notas')">
       <div class="project-head">
-        <span class="fname">notas-cli</span>
-        <div class="project-links">
-          <a href="#" target="_blank" onclick="event.stopPropagation()">código</a>
-        </div>
+        <span class="fname">V-Watt</span>
       </div>
       <div class="project-body">
-        <p class="project-desc">Cliente de terminal para tomar notas rápidas con sincronización en git. Proyecto personal, código abierto, ~400 estrellas en GitHub.</p>
-        <div class="project-tags">
-          <span class="tag">Go</span><span class="tag">SQLite</span>
-        </div>
+        <p class="project-desc">Proyecto creado para vinculación con el medio basado en una gasolinera para autos electricos.</p>
         <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
       </div>
     </div>
 
     <div class="project" onclick="openModal('modal-panel')">
       <div class="project-head">
-        <span class="fname">panel-metrica</span>
-        <div class="project-links">
-          <a href="#" target="_blank" onclick="event.stopPropagation()">código</a>
-          <a href="#" target="_blank" onclick="event.stopPropagation()">demo</a>
-        </div>
+        <span class="fname">Roomix</span>
       </div>
       <div class="project-body">
-        <p class="project-desc">Dashboard interno para visualizar métricas de producto en tiempo real, construido para un equipo de 12 personas.</p>
+        <p class="project-desc"><strong>Diseña. Mueve. Visualiza.</strong></p>
         <div class="project-tags">
-          <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
+          <span class="tag">Unity</span><span class="tag">MR</span>
         </div>
         <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
       </div>
@@ -514,13 +507,13 @@
           <img src="Files/Imagenes/MTD_4.png" alt="Captura de ruteo.app 4" aria-hidden="true">
         </div>
       </div>
-      <p class="modal-desc">Herramienta de optimización de rutas para repartos, usada por <strong>3 pymes de logística</strong>. Calcula el orden óptimo de entregas considerando ventanas horarias, capacidad del vehículo y tráfico en tiempo real. Reduce el tiempo de planificación diaria de 40 a 5 minutos y ha bajado el kilometraje recorrido en promedio un 18%.</p>
+      <p class="modal-desc">Meant To Die es un juego de <strong>terror psicologico y suspenso en primera persona</strong>, que buscan una Experiencia que les genére inmersión total a través del estilo PSX, la falta de interfaz y mecánicas centradas en Mantener la cordura para no morir y evitar alucinaciones, deberas sobrevivir a los demonios internos del protagonista debido a sus brotes mientras sus propias acciones pueden llevarlo a la muerte.</p>
+      <p class="modal-desc">Meant To Die Fue presentado en <strong>Expogame 2023</strong> y <strong>Festigame 2025</strong>.</p>
       <div class="modal-tags">
         <span class="tag">Unity</span><span class="tag">C#</span>
       </div>
       <div class="modal-links">
-        <a href="#" target="_blank">ver código ↗</a>
-        <a href="#" target="_blank">ver demo ↗</a>
+        <a href="https://www.instagram.com/psychorrorgames/" target="_blank">ver instagram ↗</a>
       </div>
     </div>
   </div>
@@ -529,26 +522,24 @@
 <div class="modal-overlay" id="modal-notas" onclick="closeOnBackdrop(event, 'modal-notas')">
   <div class="modal-box">
     <div class="modal-head">
-      <span class="fname">notas-cli</span>
+      <span class="fname">V-Watt</span>
       <button class="modal-close" onclick="closeModal('modal-notas')">cerrar ✕</button>
     </div>
     <div class="modal-body">
       <div class="carousel">
         <div class="carousel-track">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+1" alt="Captura de notas-cli 1">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+2" alt="Captura de notas-cli 2">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+3" alt="Captura de notas-cli 3">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+1" alt="Captura de notas-cli 1" aria-hidden="true">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+2" alt="Captura de notas-cli 2" aria-hidden="true">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=notas-cli+3" alt="Captura de notas-cli 3" aria-hidden="true">
+          <video controls preload="metadata" poster="https://placehold.co/440x300/14171a/8b9198?text=▶+demo+V-Watt">
+            <source src="Files/Videos/Gasolinera_Final.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
-      <p class="modal-desc">Cliente de terminal para tomar notas rápidas con <strong>sincronización en git</strong>. Cada nota se guarda como un archivo markdown versionado, así que el historial completo de cambios queda disponible sin depender de ningún servidor propio. Proyecto personal, código abierto, ~400 estrellas en GitHub.</p>
-      <div class="modal-tags">
-        <span class="tag">Go</span><span class="tag">SQLite</span>
-      </div>
+      <p class="modal-desc"><strong>próxima estación hacia la próxima generación</strong>.</p>
+      <p class="modal-desc"><strong>¡Es hora de conducir diferente!</strong></p>
+      <p class="modal-desc">En V-Watt, estamos construyendo el futuro sostenible, un cargador a la vez. Somos la primera red de electrolineras 100% solares, diseñadas para liberar a los conductores de las energías contaminantes y los gases de efecto invernadero.</p>
+      <p class="modal-desc">Nuestro compromiso es doble: Energía Limpia, Impulsamos tu auto eléctrico directamente con la energía del sol, reduciendo drásticamente la huella de carbono de cada viaje. Incentivos Verdes, Hemos creado un sistema de reservas y recompensas para premiar tu elección de cuidar el planeta, invitándote a formar parte activa de la solución. Dejemos atrás la gasolina.</p>
+      <p class="modal-desc">Abracemos la energía ilimitada y limpia. ¡Únete a V-Watt y recarga tu vehículo mientras impulsamos juntos un planeta más verde!</p>
       <div class="modal-links">
-        <a href="#" target="_blank">ver código ↗</a>
+        <a href="https://canva.link/xlicubz83bnzgkk" target="_blank">ver presentación ↗</a>
       </div>
     </div>
   </div>
@@ -557,29 +548,16 @@
 <div class="modal-overlay" id="modal-panel" onclick="closeOnBackdrop(event, 'modal-panel')">
   <div class="modal-box">
     <div class="modal-head">
-      <span class="fname">panel-metrica</span>
+      <span class="fname">Roomix</span>
       <button class="modal-close" onclick="closeModal('modal-panel')">cerrar ✕</button>
     </div>
     <div class="modal-body">
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+1" alt="Captura de panel-metrica 1">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+2" alt="Captura de panel-metrica 2">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+3" alt="Captura de panel-metrica 3">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+4" alt="Captura de panel-metrica 4">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+1" alt="Captura de panel-metrica 1" aria-hidden="true">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+2" alt="Captura de panel-metrica 2" aria-hidden="true">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+3" alt="Captura de panel-metrica 3" aria-hidden="true">
-          <img src="https://placehold.co/440x300/14171a/8b9198?text=panel-metrica+4" alt="Captura de panel-metrica 4" aria-hidden="true">
-        </div>
-      </div>
-      <p class="modal-desc">Dashboard interno para visualizar métricas de producto en <strong>tiempo real</strong>, construido para un equipo de 12 personas. Integra eventos vía WebSockets y permite armar paneles personalizados por equipo, con alertas automáticas cuando una métrica se sale de rango.</p>
+      <p class="modal-desc">ROOMIX es una <strong>aplicación de realidad mixta</strong> en desarrollo orientada a permitir que las personas visualicen, coloquen y muevan muebles dentro de su propio espacio para experimentar cómo se verían antes de tomar una decisión.</p>
       <div class="modal-tags">
-        <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
+        <span class="tag">Unity</span><span class="tag">MR</span>
       </div>
       <div class="modal-links">
-        <a href="#" target="_blank">ver código ↗</a>
-        <a href="#" target="_blank">ver demo ↗</a>
+        <a href="https://canva.link/ok3jjlzo2n136rm" target="_blank">ver presentación ↗</a>
       </div>
     </div>
   </div>
@@ -596,27 +574,8 @@
     <div class="timeline-item">
       <div class="tl-date mono">2023 — hoy</div>
       <div class="tl-body">
-        <h4>Desarrollador Full-Stack Senior</h4>
-        <div class="tl-org">Empresa Tecnológica S.A.</div>
-        <p>Lidero el desarrollo del producto principal, de arquitectura a despliegue. Mentoría a dos desarrolladores junior.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="tl-date mono">2021 — 2023</div>
-      <div class="tl-body">
-        <h4>Desarrollador Backend</h4>
-        <div class="tl-org">Startup Logística</div>
-        <p>Diseñé la API principal y el sistema de colas que procesa más de 50.000 eventos diarios.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="tl-date mono">2019 — 2021</div>
-      <div class="tl-body">
-        <h4>Desarrollador Junior</h4>
-        <div class="tl-org">Agencia Web</div>
-        <p>Desarrollo de sitios a medida para clientes de retail y educación.</p>
+        <h4>Estudiante Universitario En Ing. En Realidad Virtual y Diseño de Juegos Digitales</h4>
+        <div class="tl-org">Universidad Bernado O'Higgins</div>
       </div>
     </div>
   </div>
@@ -660,6 +619,14 @@
         closeModal(m.id);
       });
     }
+  });
+
+  // Pausa el desplazamiento del carrusel mientras un video se está reproduciendo
+  document.querySelectorAll('.carousel-track video').forEach(function(video){
+    var track = video.closest('.carousel-track');
+    video.addEventListener('play', function(){ track.style.animationPlayState = 'paused'; });
+    video.addEventListener('pause', function(){ track.style.animationPlayState = ''; });
+    video.addEventListener('ended', function(){ track.style.animationPlayState = ''; });
   });
 </script>
 </body>
