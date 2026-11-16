@@ -113,3 +113,61 @@ document.querySelectorAll('.project-card').forEach(function(card){
     }
   });
 });
+
+// Animación de aparición al hacer scroll
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+
+  var targets = document.querySelectorAll(
+    'section:not(.hero) .section-head, section:not(.hero) .about-text, .skill-group, .skill-hint, ' +
+    '.project-card, .timeline-item, .contact-title, .contact-sub, .contact-links a'
+  );
+  document.documentElement.classList.add('js-reveal');
+
+  // retraso escalonado entre elementos hermanos (tarjetas, skills, enlaces…)
+  targets.forEach(function(el){
+    el.classList.add('reveal');
+    var siblings = Array.prototype.filter.call(el.parentElement.children, function(n){
+      return n.classList.contains('reveal');
+    });
+    el.style.setProperty('--d', (siblings.indexOf(el) * 0.12) + 's');
+  });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var el = e.target;
+        el.classList.add('in');
+        io.unobserve(el);
+        // al terminar la animación se devuelven los estilos normales (así el hover de las tarjetas sigue funcionando)
+        var delay = parseFloat(el.style.getPropertyValue('--d')) || 0;
+        setTimeout(function(){
+          el.classList.remove('reveal', 'in');
+          el.style.removeProperty('--d');
+        }, (0.7 + delay) * 1000 + 60);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+
+// Menú: resalta la sección que estás viendo
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var links = Array.prototype.slice.call(document.querySelectorAll('.topbar nav a'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        if(map[e.target.id]) map[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(map).forEach(function(id){
+    var sec = document.getElementById(id);
+    if(sec) spy.observe(sec);
+  });
+})();

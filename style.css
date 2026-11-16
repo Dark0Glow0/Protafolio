@@ -39,7 +39,7 @@ a{ color:inherit; text-decoration:none; }
 .content{
   flex:1;
   padding:64px 40px;
-  max-width:760px;
+  max-width:1120px;
   margin:0 auto;
 }
 @media (max-width:640px){
@@ -194,7 +194,7 @@ h1.name{
   margin-bottom:16px;
 }
 .contact-sub{ color:var(--text-dim); font-size:16px; margin-bottom:30px; max-width:52ch; }
-.contact-links{ display:flex; flex-direction:column; gap:2px; }
+.contact-links{ display:flex; flex-direction:column; gap:2px; max-width:620px; }
 .contact-links a{
   font-family:'IBM Plex Mono', monospace;
   font-size:15px;
@@ -346,8 +346,8 @@ footer{
 /* ---------- tarjetas de proyecto ---------- */
 .project-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:28px;
 }
 .project-card{
   display:flex;
@@ -409,22 +409,22 @@ footer{
   color:var(--amber);
   border:1px solid var(--line);
 }
-.card-body{ padding:16px; display:flex; flex-direction:column; flex:1; }
+.card-body{ padding:24px 24px 22px; display:flex; flex-direction:column; flex:1; }
 .card-title{
-  font-size:18px;
+  font-size:23px;
   font-weight:700;
   letter-spacing:-0.01em;
-  margin-bottom:6px;
+  margin-bottom:10px;
 }
-.card-desc{ color:var(--text-dim); font-size:14px; margin-bottom:12px; }
+.card-desc{ color:var(--text-dim); font-size:15.5px; line-height:1.65; margin-bottom:18px; }
 .card-desc strong{ color:var(--text); font-weight:600; }
 .project-tags{ display:flex; flex-wrap:wrap; gap:6px; }
-.project-tags .tag{ font-size:11.5px; padding:3px 8px; color:var(--text-dim); }
+.project-tags .tag{ font-size:12px; padding:4px 10px; color:var(--text-dim); }
 .project-open-hint{
   margin-top:auto;
-  padding-top:12px;
+  padding-top:18px;
   font-family:'IBM Plex Mono', monospace;
-  font-size:11.5px;
+  font-size:12.5px;
   color:var(--text-dim);
 }
 .project-open-hint::before{ content:"↗ "; }
@@ -522,4 +522,34 @@ footer{
 
 @media (max-width:640px){
   .g-thumb{ width:72px; }
+}
+
+/* ---------- animaciones ---------- */
+/* portada: entra escalonada al cargar */
+@keyframes heroIn{
+  from{ opacity:0; transform:translateY(18px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+.hero .content > *{ animation:heroIn .7s cubic-bezier(.2,.7,.2,1) both; }
+.hero .content > *:nth-child(1){ animation-delay:.05s; }
+.hero .content > *:nth-child(2){ animation-delay:.18s; }
+.hero .content > *:nth-child(3){ animation-delay:.31s; }
+.hero .content > *:nth-child(4){ animation-delay:.44s; }
+.hero .content > *:nth-child(5){ animation-delay:.57s; }
+
+/* resto de la página: aparece al hacer scroll (solo si JS está activo) */
+.js-reveal .reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--d, 0s);
+}
+.js-reveal .reveal.in{ opacity:1; transform:none; }
+
+/* enlace del menú de la sección actual */
+.topbar nav a.active{ color:var(--amber); }
+
+@media (prefers-reduced-motion: reduce){
+  .hero .content > *{ animation:none; }
+  .js-reveal .reveal{ opacity:1; transform:none; transition:none; }
 }
