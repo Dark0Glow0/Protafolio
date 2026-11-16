@@ -11,7 +11,9 @@
 <div class="topbar">
   <div class="dots"><span></span><span></span><span></span></div>
   <nav>
+    <a href="#sistemas">sistemas</a>
     <a href="#proyectos">proyectos</a>
+    <a href="#logros">logros</a>
     <a href="#sobre-mi">sobre-mi</a>
     <a href="#skills">skills</a>
     <a href="#experiencia">experiencia</a>
@@ -22,7 +24,7 @@
 <!-- HERO -->
 <section class="hero row" id="inicio">
   <div class="content">
-    <div class="prompt-line"><span class="path">benjamin@dev</span><span class="cmd"> ~ whoami</span></div>
+    <div class="prompt-line"><span class="path">Dark0Glow0</span><span class="cmd"> ~ dev</span></div>
     <h1 class="name">Benjamin Bravo</h1>
     <p class="role">Ing. En Realidad Virtual y Diseño de Juegos Digitales</p>
     <p class="bio"><strong>experiencias para un futuro:</strong> Programación, diseño y creatividad en un mismo lugar. Me gusta llevar las ideas desde la primera línea de código hasta una experiencia completa, cuidando cada detalle del proceso.</p>
@@ -34,13 +36,51 @@
   </div>
 </section>
 
+<!-- SISTEMAS Y MECANICAS -->
+<section class="row" id="sistemas">
+  <div class="content">
+    <div class="section-head">
+      <span class="section-num mono">01</span>
+      <h2 class="section-title">Sistemas y mecánicas</h2>
+    </div>
+    <p class="sys-intro">Mecánicas y sistemas que he programado en Unity, explicados paso a paso.</p>
+
+    <!-- PLANTILLA: para agregar otra mecánica, copia el bloque <article class="sys-card"> completo y pégalo debajo de este. -->
+    <div class="sys-list">
+
+      <article class="sys-card">
+        <div class="sys-media" data-name="video de la mecánica">
+          <video controls preload="metadata" playsinline>
+            <source src="Files/Videos/sistema1.mp4#t=0.5" type="video/mp4" onerror="this.parentElement.remove()">
+          </video>
+        </div>
+        <div class="sys-body">
+          <h3 class="sys-title">Nombre de tu mecánica o sistema</h3>
+          <p class="sys-stack">C# · Unity</p>
+          <p class="sys-label">objetivo</p>
+          <p class="sys-goal">Escribe en una línea qué querías lograr con esta mecánica.</p>
+          <p class="sys-label">cómo se construyó</p>
+          <ul class="sys-steps">
+            <li>Primer paso técnico: qué componente o enfoque usaste.</li>
+            <li>Segundo paso: cómo se conectan las partes del sistema.</li>
+            <li>Tercer paso: qué detalle mejoró la sensación de juego.</li>
+          </ul>
+          <a class="sys-link" href="#" target="_blank">ver repositorio ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- PROYECTOS -->
 <section class="row" id="proyectos">
   <div class="content">
     <div class="section-head">
-      <span class="section-num mono">01</span>
+      <span class="section-num mono">02</span>
       <h2 class="section-title">Proyectos</h2>
     </div>
+    <p class="sys-intro">Proyectos que he creado y en los que he participado.</p>
 
     <div class="project-grid">
 
@@ -51,7 +91,8 @@
         </div>
         <div class="card-body">
           <h3 class="card-title">Meant To Die</h3>
-          <p class="card-desc">Videojuego de <strong>terror psicológico y suspenso en primera persona</strong> con estilo PSX, sin interfaz y con mecánicas centradas en mantener la cordura para no morir. Presentado en <strong>Expogame 2023</strong> y <strong>Festigame 2025</strong>.</p>
+          <!-- RESUMEN de la tarjeta (texto corto). El texto largo está dentro del modal más abajo. -->
+          <p class="card-desc">Videojuego de terror psicológico en primera persona con estilo PSX. Presentado en Expogame 2023 y Festigame 2025.</p>
           <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span></div>
           <p class="project-open-hint">ver fotos y detalle</p>
         </div>
@@ -64,7 +105,8 @@
         </div>
         <div class="card-body">
           <h3 class="card-title">V-Watt</h3>
-          <p class="card-desc">Proyecto de vinculación con el medio: la <strong>primera red de electrolineras 100% solares</strong>, con un sistema de reservas y recompensas que premia la elección de cuidar el planeta.</p>
+          <!-- RESUMEN de la tarjeta (texto corto). El texto largo está dentro del modal más abajo. -->
+          <p class="card-desc">La primera red de electrolineras 100% solares, con reservas y recompensas para quienes cuidan el planeta.</p>
           <p class="project-open-hint">ver video y detalle</p>
         </div>
       </article>
@@ -75,9 +117,56 @@
         </div>
         <div class="card-body">
           <h3 class="card-title">Roomix</h3>
-          <p class="card-desc"><strong>Diseña. Mueve. Visualiza.</strong> Aplicación de realidad mixta en desarrollo que te permite colocar y mover muebles dentro de tu propio espacio para ver cómo se verían antes de decidir.</p>
+          <!-- RESUMEN de la tarjeta (texto corto). El texto largo está dentro del modal más abajo. -->
+          <p class="card-desc"><strong>Diseña. Mueve. Visualiza.</strong> App de realidad mixta para probar muebles en tu propio espacio.</p>
           <div class="project-tags"><span class="tag">Unity</span><span class="tag">MR</span></div>
           <p class="project-open-hint">ver detalle</p>
+        </div>
+      </article>
+
+      <!-- PLANTILLA DE PROYECTO NUEVO (tarjeta): copia, pega debajo y cambia los textos.
+          El número de openModal debe coincidir con el id de su modal (ver más abajo).
+      <article class="project-card" tabindex="0" role="button" aria-label="Ver proyecto NOMBRE" onclick="openModal('modal-nuevo')">
+        <div class="card-cover">
+          <img src="Files/Imagenes/NOMBRE_1.png" alt="NOMBRE">
+          <span class="card-badge">4 fotos</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">NOMBRE</h3>
+          <p class="card-desc">Resumen corto del proyecto (1 o 2 líneas). El texto largo va en el modal.</p>
+          <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span></div>
+          <p class="project-open-hint">ver fotos y detalle</p>
+        </div>
+      </article>
+      -->
+
+    </div>
+  </div>
+</section>
+
+<!-- LOGROS Y EVENTOS -->
+<section class="row" id="logros">
+  <div class="content">
+    <div class="section-head">
+      <span class="section-num mono">03</span>
+      <h2 class="section-title">Logros y eventos</h2>
+    </div>
+    <p class="sys-intro">Eventos, competencias y game jams en los que he participado.</p>
+
+    <div class="sys-list">
+
+      <article class="sys-card ach-card">
+        <div class="sys-media ach-media" data-name="fotos del evento">
+          <img src="Files/Imagenes/logro1_1.jpg" alt="Foto del evento 1" onerror="this.remove()">
+          <img src="Files/Imagenes/logro1_2.jpg" alt="Foto del evento 2" onerror="this.remove()">
+        </div>
+        <div class="sys-body">
+          <p class="sys-stack">2025</p>
+          <h3 class="sys-title">Nombre del evento o logro</h3>
+          <p class="sys-label">rol</p>
+          <p class="sys-goal">Tu rol en el evento: desarrolladora, expositora, programadora…</p>
+          <p class="sys-label">descripción</p>
+          <p class="sys-goal">Cuenta en pocas líneas qué hiciste, qué mostraste y qué aprendiste o cómo te fue.</p>
         </div>
       </article>
 
@@ -85,11 +174,12 @@
   </div>
 </section>
 
+
 <!-- SOBRE MI -->
 <section class="row" id="sobre-mi">
   <div class="content">
     <div class="section-head">
-      <span class="section-num mono">02</span>
+      <span class="section-num mono">04</span>
       <h2 class="section-title">Sobre mí</h2>
     </div>
     <p class="about-text">Soy estudiante de <strong>4 años</strong> de Ingeniería en Realidad Virtual en la Universidad Bernardo O’Higgins, enfocado principalmente en programación, Game Developer y desarrollo de videojuegos. También exploro el desarrollo Full Stack, trabajando tanto con backend como frontend.</p>
@@ -102,7 +192,7 @@
 <section class="row" id="skills">
   <div class="content">
     <div class="section-head">
-      <span class="section-num mono">03</span>
+      <span class="section-num mono">05</span>
       <h2 class="section-title">Skills</h2>
     </div>
     <div class="skill-groups">
@@ -213,7 +303,7 @@
 <section class="row" id="experiencia">
   <div class="content">
     <div class="section-head">
-      <span class="section-num mono">04</span>
+      <span class="section-num mono">06</span>
       <h2 class="section-title">Experiencia</h2>
     </div>
 
@@ -224,14 +314,24 @@
         <div class="tl-org">Universidad Bernado O'Higgins</div>
       </div>
     </div>
-  </div>
+
+    <div class="timeline-item">
+      <div class="tl-date mono">2025</div>
+      <div class="tl-body">
+        <h4>SERCOTEC</h4>
+        <div class="tl-org">Vinculación con el medio · UBO</div>
+        <p>Proyecto creado para el negocio "nombre del negocio" de la mano del programa de vinculación con el medio de la UBO.</p>
+      </div>
+    </div>
+  </div> 
+
 </section>
 
 <!-- CONTACTO -->
 <section class="contact row" id="contacto">
   <div class="content">
     <div class="section-head">
-      <span class="section-num mono">05</span>
+      <span class="section-num mono">07</span>
       <h2 class="section-title">Contacto</h2>
     </div>
     <p class="contact-title">Hablemos de tu próximo proyecto.</p>

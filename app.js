@@ -121,7 +121,7 @@ document.querySelectorAll('.project-card').forEach(function(card){
 
   var targets = document.querySelectorAll(
     'section:not(.hero) .section-head, section:not(.hero) .about-text, .skill-group, .skill-hint, ' +
-    '.project-card, .timeline-item, .contact-title, .contact-sub, .contact-links a'
+    '.project-card, .sys-intro, .sys-card, .timeline-item, .contact-title, .contact-sub, .contact-links a'
   );
   document.documentElement.classList.add('js-reveal');
 
@@ -178,3 +178,10 @@ document.querySelectorAll('.project-card').forEach(function(card){
     });
   }, { threshold: 0 }).observe(hero);
 })();
+
+// Sistemas: al reproducir un video se pausan los demás
+document.querySelectorAll('.sys-media video').forEach(function(v){
+  v.addEventListener('play', function(){
+    document.querySelectorAll('.sys-media video').forEach(function(o){ if(o !== v) o.pause(); });
+  });
+});
