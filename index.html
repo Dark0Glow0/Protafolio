@@ -42,40 +42,45 @@
       <h2 class="section-title">Proyectos</h2>
     </div>
 
-    <div class="project" onclick="openModal('modal-ruteo')">
-      <div class="project-head">
-        <span class="fname">Meant To Die</span>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Videojuego de terror psicológico y suspenso en primera persona indie creado el primer semestre en unity.</p>
-        <div class="project-tags">
-          <span class="tag">Unity</span><span class="tag">C#</span>
-        </div>
-        <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
-      </div>
-    </div>
+    <div class="project-grid">
 
-    <div class="project" onclick="openModal('modal-notas')">
-      <div class="project-head">
-        <span class="fname">V-Watt</span>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Proyecto creado para vinculación con el medio basado en una gasolinera para autos electricos.</p>
-        <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
-      </div>
-    </div>
-
-    <div class="project" onclick="openModal('modal-panel')">
-      <div class="project-head">
-        <span class="fname">Roomix</span>
-      </div>
-      <div class="project-body">
-        <p class="project-desc"><strong>Diseña. Mueve. Visualiza.</strong></p>
-        <div class="project-tags">
-          <span class="tag">Unity</span><span class="tag">MR</span>
+      <article class="project-card" tabindex="0" role="button" aria-label="Ver proyecto Meant To Die" onclick="openModal('modal-ruteo')">
+        <div class="card-cover">
+          <img src="Files/Imagenes/MTD_1.png" alt="Meant To Die">
+          <span class="card-badge">4 fotos</span>
         </div>
-        <p class="project-open-hint" style="margin-top:12px;">ver detalle y fotos</p>
-      </div>
+        <div class="card-body">
+          <h3 class="card-title">Meant To Die</h3>
+          <p class="card-desc">Videojuego de terror psicológico y suspenso en primera persona, creado el primer semestre en Unity.</p>
+          <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span></div>
+          <p class="project-open-hint">ver fotos y detalle</p>
+        </div>
+      </article>
+
+      <article class="project-card" tabindex="0" role="button" aria-label="Ver proyecto V-Watt" onclick="openModal('modal-notas')">
+        <div class="card-cover">
+          <video muted playsinline preload="metadata" src="Files/Videos/Gasolinera_Final.mp4#t=0.5"></video>
+          <span class="card-badge">▶ video</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">V-Watt</h3>
+          <p class="card-desc">Proyecto de vinculación con el medio basado en una gasolinera para autos eléctricos.</p>
+          <p class="project-open-hint">ver video y detalle</p>
+        </div>
+      </article>
+
+      <article class="project-card" tabindex="0" role="button" aria-label="Ver proyecto Roomix" onclick="openModal('modal-panel')">
+        <div class="card-cover card-cover--empty" data-name="Roomix">
+          <img src="Files/Imagenes/Roomix_1.png" alt="Roomix" onerror="this.remove()">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Roomix</h3>
+          <p class="card-desc"><strong>Diseña. Mueve. Visualiza.</strong> App de realidad mixta para probar muebles en tu propio espacio.</p>
+          <div class="project-tags"><span class="tag">Unity</span><span class="tag">MR</span></div>
+          <p class="project-open-hint">ver detalle</p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -132,16 +137,17 @@
       <button class="modal-close" onclick="closeModal('modal-ruteo')">cerrar ✕</button>
     </div>
     <div class="modal-body">
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="Files/Imagenes/MTD_1.png" alt="Captura de ruteo.app 1">
-          <img src="Files/Imagenes/MTD_2.png" alt="Captura de ruteo.app 2">
-          <img src="Files/Imagenes/MTD_3.png" alt="Captura de ruteo.app 3">
-          <img src="Files/Imagenes/MTD_4.png" alt="Captura de ruteo.app 4">
-          <img src="Files/Imagenes/MTD_1.png" alt="Captura de ruteo.app 1" aria-hidden="true">
-          <img src="Files/Imagenes/MTD_2.png" alt="Captura de ruteo.app 2" aria-hidden="true">
-          <img src="Files/Imagenes/MTD_3.png" alt="Captura de ruteo.app 3" aria-hidden="true">
-          <img src="Files/Imagenes/MTD_4.png" alt="Captura de ruteo.app 4" aria-hidden="true">
+      <div class="gallery">
+        <div class="gallery-stage">
+          <button class="g-arrow g-prev" type="button" aria-label="Anterior">‹</button>
+          <button class="g-arrow g-next" type="button" aria-label="Siguiente">›</button>
+          <span class="g-count"></span>
+        </div>
+        <div class="gallery-thumbs">
+          <button class="g-thumb" type="button" data-type="image" data-src="Files/Imagenes/MTD_1.png" data-alt="Meant To Die, captura 1"><img src="Files/Imagenes/MTD_1.png" alt=""></button>
+          <button class="g-thumb" type="button" data-type="image" data-src="Files/Imagenes/MTD_2.png" data-alt="Meant To Die, captura 2"><img src="Files/Imagenes/MTD_2.png" alt=""></button>
+          <button class="g-thumb" type="button" data-type="image" data-src="Files/Imagenes/MTD_3.png" data-alt="Meant To Die, captura 3"><img src="Files/Imagenes/MTD_3.png" alt=""></button>
+          <button class="g-thumb" type="button" data-type="image" data-src="Files/Imagenes/MTD_4.png" data-alt="Meant To Die, captura 4"><img src="Files/Imagenes/MTD_4.png" alt=""></button>
         </div>
       </div>
       <p class="modal-desc">Meant To Die es un juego de <strong>terror psicologico y suspenso en primera persona</strong>, que buscan una Experiencia que les genére inmersión total a través del estilo PSX, la falta de interfaz y mecánicas centradas en Mantener la cordura para no morir y evitar alucinaciones, deberas sobrevivir a los demonios internos del protagonista debido a sus brotes mientras sus propias acciones pueden llevarlo a la muerte.</p>
@@ -163,10 +169,15 @@
       <button class="modal-close" onclick="closeModal('modal-notas')">cerrar ✕</button>
     </div>
     <div class="modal-body">
-      <div class="video-frame">
-        <video controls preload="metadata" poster="https://placehold.co/640x360/14171a/8b9198?text=▶+demo+V-Watt">
-          <source src="Files/Videos/Gasolinera_Final.mp4" type="video/mp4">
-        </video>
+      <div class="gallery">
+        <div class="gallery-stage">
+          <button class="g-arrow g-prev" type="button" aria-label="Anterior">‹</button>
+          <button class="g-arrow g-next" type="button" aria-label="Siguiente">›</button>
+          <span class="g-count"></span>
+        </div>
+        <div class="gallery-thumbs">
+          <button class="g-thumb" type="button" data-type="video" data-src="Files/Videos/Gasolinera_Final.mp4"><video muted preload="metadata" src="Files/Videos/Gasolinera_Final.mp4#t=0.5"></video><span class="g-play">▶</span></button>
+        </div>
       </div>
       <p class="modal-desc"><strong>próxima estación hacia la próxima generación</strong>.</p>
       <p class="modal-desc"><strong>¡Es hora de conducir diferente!</strong></p>
@@ -187,6 +198,8 @@
       <button class="modal-close" onclick="closeModal('modal-panel')">cerrar ✕</button>
     </div>
     <div class="modal-body">
+      <!-- Para agregar fotos a Roomix: copia aquí el bloque <div class="gallery"> de Meant To Die
+           y cambia las rutas (data-src y src) por las de tus fotos. Cada foto es un <button class="g-thumb">. -->
       <p class="modal-desc">ROOMIX es una <strong>aplicación de realidad mixta</strong> en desarrollo orientada a permitir que las personas visualicen, coloquen y muevan muebles dentro de su propio espacio para experimentar cómo se verían antes de tomar una decisión.</p>
       <div class="modal-tags">
         <span class="tag">Unity</span><span class="tag">MR</span>

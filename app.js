@@ -53,3 +53,63 @@ document.querySelectorAll('.skill-btn').forEach(function(btn){
     });
   });
 });
+
+// Galería de proyectos: miniaturas + imagen/video grande (sin carrusel automático)
+function initGallery(gallery){
+  var stage = gallery.querySelector('.gallery-stage');
+  var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('.g-thumb'));
+  var count = gallery.querySelector('.g-count');
+  var current = 0;
+
+  if(thumbs.length <= 1) gallery.classList.add('single');
+
+  function show(i){
+    current = (i + thumbs.length) % thumbs.length;
+    thumbs.forEach(function(t, k){ t.classList.toggle('active', k === current); });
+
+    var old = stage.querySelector('.stage-media');
+    if(old) old.remove();
+
+    var t = thumbs[current];
+    var el;
+    if(t.dataset.type === 'video'){
+      el = document.createElement('video');
+      el.controls = true;
+      el.preload = 'metadata';
+      el.setAttribute('playsinline', '');
+      el.src = t.dataset.src + '#t=0.5';
+    } else {
+      el = document.createElement('img');
+      el.src = t.dataset.src;
+      el.alt = t.dataset.alt || '';
+    }
+    el.className = 'stage-media';
+    stage.insertBefore(el, stage.firstChild);
+    count.textContent = (current + 1) + ' / ' + thumbs.length;
+  }
+
+  thumbs.forEach(function(t, k){ t.addEventListener('click', function(){ show(k); }); });
+  gallery.querySelector('.g-prev').addEventListener('click', function(){ show(current - 1); });
+  gallery.querySelector('.g-next').addEventListener('click', function(){ show(current + 1); });
+
+  gallery.step = function(d){ show(current + d); };
+  show(0);
+}
+document.querySelectorAll('.gallery').forEach(initGallery);
+
+// Flechas del teclado dentro del modal abierto
+document.addEventListener('keydown', function(evt){
+  if(evt.key !== 'ArrowLeft' && evt.key !== 'ArrowRight') return;
+  var g = document.querySelector('.modal-overlay.open .gallery');
+  if(g && g.step) g.step(evt.key === 'ArrowLeft' ? -1 : 1);
+});
+
+// Tarjetas de proyecto: abrir también con Enter o Espacio
+document.querySelectorAll('.project-card').forEach(function(card){
+  card.addEventListener('keydown', function(evt){
+    if(evt.key === 'Enter' || evt.key === ' '){
+      evt.preventDefault();
+      card.click();
+    }
+  });
+});
