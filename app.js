@@ -134,21 +134,17 @@ document.querySelectorAll('.project-card').forEach(function(card){
     el.style.setProperty('--d', (siblings.indexOf(el) * 0.12) + 's');
   });
 
+  // Entra cuando se ve (>=12%) y sale cuando desaparece por completo,
+  // así la animación se repite cada vez que vuelves a pasar por ahí.
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){
-        var el = e.target;
-        el.classList.add('in');
-        io.unobserve(el);
-        // al terminar la animación se devuelven los estilos normales (así el hover de las tarjetas sigue funcionando)
-        var delay = parseFloat(el.style.getPropertyValue('--d')) || 0;
-        setTimeout(function(){
-          el.classList.remove('reveal', 'in');
-          el.style.removeProperty('--d');
-        }, (0.7 + delay) * 1000 + 60);
+      if(e.intersectionRatio >= 0.12){
+        e.target.classList.add('in');
+      } else if(!e.isIntersecting){
+        e.target.classList.remove('in');
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: [0, 0.12], rootMargin: '0px 0px -40px 0px' });
   targets.forEach(function(el){ io.observe(el); });
 })();
 
@@ -170,4 +166,15 @@ document.querySelectorAll('.project-card').forEach(function(card){
     var sec = document.getElementById(id);
     if(sec) spy.observe(sec);
   });
+})();
+
+// Portada: la animación de entrada se repite al volver arriba
+(function(){
+  var hero = document.querySelector('.hero');
+  if(!hero || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      hero.classList.toggle('reset', !e.isIntersecting);
+    });
+  }, { threshold: 0 }).observe(hero);
 })();
