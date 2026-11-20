@@ -31,7 +31,7 @@
     <div class="cta-row">
       <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
       <a class="btn btn-ghost" href="#contacto">Escribirme</a>
-      <a class="btn btn-ghost" href="Files/Cv/Benjamín Bravo (1).pdf" target="_blank">Descargar CV</a>
+      <a class="btn btn-ghost" href="Files/Cv/Benjamin_Bravo_CV.pdf" target="_blank">Descargar CV</a>
     </div>
   </div>
 </section>
@@ -43,29 +43,104 @@
       <span class="section-num mono">01</span>
       <h2 class="section-title">Sistemas y mecánicas</h2>
     </div>
-    <p class="sys-intro">Mecánicas y sistemas que he programado en Unity, explicados paso a paso.</p>
+    <p class="sys-intro">Mecánicas y sistemas que he programado, explicados paso a paso.</p>
 
-    <!-- PLANTILLA: para agregar otra mecánica, copia el bloque <article class="sys-card"> completo y pégalo debajo de este. -->
     <div class="sys-list">
+
+      <article class="sys-card">
+        <div class="sys-media" data-name="foto de la mecánica">
+          <img src="Files/Imagenes/Textual Visual Scripting.png" alt="Textual Learning" onerror="this.remove()">
+        </div>
+        <div class="sys-body">
+          <h3 class="sys-title">Textual Learning <span class="sys-status">en desarrollo</span></h3>
+          <p class="sys-stack">C# · Unity · Editor Window · Visual Scripting</p>
+          <p class="sys-label">objetivo</p>
+          <p class="sys-goal">Enseñar a programar a personas que se inician en la programación, mostrando en una ventana de Unity el código C# que se genera a partir de nodos de Unity Visual Scripting.</p>
+          <p class="sys-label">qué hace</p>
+          <ul class="sys-steps">
+            <li>Abre una ventana propia dentro de Unity, con su interfaz y su ruta de menú.</li>
+            <li>Lee el grafo de nodos que se arrastra a la ventana.</li>
+            <li>Reconoce los nodos del grafo mediante un mecanismo de detección automática; actualmente reconoce Start, Update, Debug.Log y sus valores.</li>
+            <li>Actualiza constantemente el código mostrado en la ventana.</li>
+            <li>Reconoce el orden de los nodos leyendo sus conexiones, para mostrar el código ordenado y limpio.</li>
+            <li>Muestra el código generado, con colores según cada tipo de palabra, dentro de un panel oscuro.</li>
+          </ul>
+
+          <p class="sys-label">cómo se construyó</p>
+          <ul class="sys-steps">
+            <li>Creé el script VisualCodeWindow.cs para crear la ventana y su ruta de menú.</li>
+            <li>Implementé dentro de VisualCodeWindow.cs la lectura de los nodos y sus conexiones para mostrarlos en la ventana; pasé de hacerlo de forma manual a automatizar de a poco cada parte importante, hasta lograr una primera versión automatizada.</li>
+            <li>Implementé que el código mostrado se actualice constantemente cuando cambia el grafo.</li>
+            <li>Implementé colores distintivos para cada tipo de palabra, como en un editor de C#.</li>
+          </ul>
+          <a class="sys-link" href="https://github.com/Dark0Glow0/Textual-Learning" target="_blank">ver repositorio ↗</a>
+        </div>
+      </article>
 
       <article class="sys-card">
         <div class="sys-media" data-name="video de la mecánica">
           <video controls preload="metadata" playsinline>
-            <source src="Files/Videos/sistema1.mp4#t=0.5" type="video/mp4" onerror="this.parentElement.remove()">
+            <source src="Files/Videos/XR_Remote_Controller.mp4#t=0.5" type="video/mp4" onerror="this.parentElement.remove()">
           </video>
         </div>
         <div class="sys-body">
-          <h3 class="sys-title">Nombre de tu mecánica o sistema</h3>
-          <p class="sys-stack">C# · Unity</p>
+          <h3 class="sys-title">XR Remote Controller</h3>
+          <p class="sys-stack">C# · Unity · OpenXR</p>
           <p class="sys-label">objetivo</p>
-          <p class="sys-goal">Escribe en una línea qué querías lograr con esta mecánica.</p>
+          <p class="sys-goal">Simulador de controladores XR para futuros proyectos</p>
+          <p class="sys-label">qué hace</p>
+          <ul class="sys-steps">
+            <li>Al poner la batería, los controles quedan disponibles.</li>
+            <li>La palanca (lever) enciende el panel de controles.</li>
+            <li>El joystick mueve la posición del avión.</li>
+            <li>Un dial controla su altura y otro su rotación.</li>
+            <li>La perilla (knob) aumenta o disminuye la velocidad.</li>
+            <li>Un texto sobre cada control muestra en tiempo real su estado: encendido, rotación, velocidad y altura.</li>
+            <li>Si se quita la batería con el panel funcionando, todo se apaga, aunque la palanca siga encendida.</li>
+          </ul>
+          
           <p class="sys-label">cómo se construyó</p>
           <ul class="sys-steps">
-            <li>Primer paso técnico: qué componente o enfoque usaste.</li>
-            <li>Segundo paso: cómo se conectan las partes del sistema.</li>
-            <li>Tercer paso: qué detalle mejoró la sensación de juego.</li>
+            <li>Utilicé los recursos de XR Interaction Toolkit y XRI Examples como base para crear el simulador.</li>
+            <li>Programé un script para la batería: al ponerla, da energía a los controles y se activan; al sacarla, los controles se desactivan y el avión deja de funcionar.</li>
+            <li>Esta base me permite ahorrar tiempo al construir paneles de controles de maquinaria o de otro rubro con sistema de energía.</li>
           </ul>
-          <a class="sys-link" href="#" target="_blank">ver repositorio ↗</a>
+          <a class="sys-link" href="https://github.com/Dark0Glow0/XR-Remote-Controller" target="_blank">ver repositorio ↗</a>
+        </div>
+      </article>
+
+      <article class="sys-card">
+        <div class="sys-media" data-name="video de la mecánica">
+          <video controls preload="metadata" playsinline>
+            <source src="Files/Videos/TOM_Sistema_Suizo.mp4#t=0.5" type="video/mp4" onerror="this.parentElement.remove()">
+          </video>
+        </div>
+        <div class="sys-body">
+          <h3 class="sys-title">TOM: Tournament Management System <span class="sys-status">en desarrollo</span></h3>
+          <p class="sys-stack">HTML · CSS · JavaScript · Visual Studio Code</p>
+          <p class="sys-label">objetivo</p>
+          <p class="sys-goal">Gestionar torneos no oficiales de TCG con sistema de rondas suizas, inspirado en el TOM oficial de Pokémon.</p>
+          <p class="sys-label">qué hace</p>
+          <ul class="sys-steps">
+            <li>Define el nombre del torneo y el número de rondas a jugar.</li>
+            <li>Calcula el desempate automáticamente con OP% (Opponents' Win Percentage) y OPP% (Opponents' Opponents' Win Percentage).</li>
+            <li>Agrega y quita participantes; el rating es opcional y solo ordena el primer emparejamiento.</li>
+            <li>Genera cada ronda con emparejamientos de sistema suizo y registra el resultado con botones: victoria 3 puntos, empate 1 punto para cada uno y derrota 0.</li>
+            <li>Asigna un bye (victoria automática) cuando el número de jugadores es impar.</li>
+            <li>Muestra la clasificación ordenada por puntos, con el récord de victorias, derrotas y empates y los porcentajes de desempate.</li>
+          </ul>
+
+          <p class="sys-label">cómo se construyó</p>
+          <ul class="sys-steps">
+            <li>Creé una navegación por pestañas (Configuración, Jugadores, Rondas y Clasificación), con un contador que muestra cuántos jugadores hay inscritos.</li>
+            <li>Guardé todo el estado del torneo en localStorage: jugadores, puntajes, byes, rondas, emparejamientos y resultados, para que no se pierda al recargar la página.</li>
+            <li>Programé el emparejamiento suizo: ordena a los jugadores por puntaje (y por rating en la primera ronda) y evita que se repitan rivales, salvo cuando ya no queda otra opción.</li>
+            <li>Implementé la asignación del bye al jugador con menor puntaje que aún no lo haya recibido, con puntuación al estilo Pokémon: 3 por victoria, 1 por empate y 0 por derrota.</li>
+            <li>Programé el desempate con OP% y OPP%: el porcentaje de victorias de los rivales y el de los rivales de los rivales, con un mínimo del 25% como en Pokémon.</li>
+            <li>Lo publiqué en GitHub Pages con licencia GPL 3.0, para usarlo desde el navegador sin descargar nada.</li>
+          </ul>
+          <a class="sys-link" href="https://github.com/Dark0Glow0/TOM" target="_blank">ver repositorio ↗</a>
+          <a class="sys-link" href="https://dark0glow0.github.io/TOM/" target="_blank">probar en linea ↗</a>
         </div>
       </article>
 
@@ -111,35 +186,6 @@
         </div>
       </article>
 
-      <article class="project-card" tabindex="0" role="button" aria-label="Ver proyecto Roomix" onclick="openModal('modal-panel')">
-        <div class="card-cover card-cover--empty" data-name="Roomix">
-          <img src="Files/Imagenes/Roomix_1.png" alt="Roomix" onerror="this.remove()">
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Roomix</h3>
-          <!-- RESUMEN de la tarjeta (texto corto). El texto largo está dentro del modal más abajo. -->
-          <p class="card-desc"><strong>Diseña. Mueve. Visualiza.</strong> App de realidad mixta para probar muebles en tu propio espacio.</p>
-          <div class="project-tags"><span class="tag">Unity</span><span class="tag">MR</span></div>
-          <p class="project-open-hint">ver detalle</p>
-        </div>
-      </article>
-
-      <!-- PLANTILLA DE PROYECTO NUEVO (tarjeta): copia, pega debajo y cambia los textos.
-          El número de openModal debe coincidir con el id de su modal (ver más abajo).
-      <article class="project-card" tabindex="0" role="button" aria-label="Ver proyecto NOMBRE" onclick="openModal('modal-nuevo')">
-        <div class="card-cover">
-          <img src="Files/Imagenes/NOMBRE_1.png" alt="NOMBRE">
-          <span class="card-badge">4 fotos</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">NOMBRE</h3>
-          <p class="card-desc">Resumen corto del proyecto (1 o 2 líneas). El texto largo va en el modal.</p>
-          <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span></div>
-          <p class="project-open-hint">ver fotos y detalle</p>
-        </div>
-      </article>
-      -->
-
     </div>
   </div>
 </section>
@@ -157,16 +203,43 @@
 
       <article class="sys-card ach-card">
         <div class="sys-media ach-media" data-name="fotos del evento">
-          <img src="Files/Imagenes/logro1_1.jpg" alt="Foto del evento 1" onerror="this.remove()">
-          <img src="Files/Imagenes/logro1_2.jpg" alt="Foto del evento 2" onerror="this.remove()">
+          <img src="Files/Imagenes/Certificado_Game_Jam.jpg" alt="Foto del evento " onerror="this.remove()">
+        </div>
+        <div class="sys-body">
+          <p class="sys-stack">2024</p>
+          <h3 class="sys-title">2do Lugar en Social Impact Game Jam</h3>
+          <p class="sys-label">rol</p>
+          <p class="sys-goal">Programador principal</p>
+          <p class="sys-label">descripción</p>
+          <p class="sys-goal">Atacama Valley es un juego inspirado en Stardew Valley, donde una niña recoge y recicla basura en el valle de Atacama. Programé las mecánicas principales: la recolección de basura y la construcción de la ciudad a partir de lo reciclado. Fue mi primer acercamiento a los juegos educativos, y el proyecto obtuvo el segundo lugar por conectar los videojuegos con los ODS y el impacto social.</p>
+        </div>
+      </article>
+
+      <article class="sys-card ach-card">
+        <div class="sys-media ach-media" data-name="fotos del evento">
+          <img src="Files/Imagenes/logro2_1.jpg" alt="Foto del evento " onerror="this.remove()">
+        </div>
+        <div class="sys-body">
+          <p class="sys-stack">2023</p>
+          <h3 class="sys-title">Expogame 2023</h3>
+          <p class="sys-label">rol</p>
+          <p class="sys-goal">Programador principal</p>
+          <p class="sys-label">descripción</p>
+          <p class="sys-goal">Meant To Die fue presentado en Expogame 2023, un evento de videojuegos y cultura pop en Chile. Fue mi primer proyecto de videojuego completo, y me permitió aprender sobre el desarrollo de juegos, la presentación de proyectos y la interacción con otros desarrolladores y jugadores.</p>
+        </div>
+      </article>
+
+      <article class="sys-card ach-card">
+        <div class="sys-media ach-media" data-name="fotos del evento">
+          <img src="Files/Imagenes/logro3_1.jpg" alt="Foto del evento " onerror="this.remove()">
         </div>
         <div class="sys-body">
           <p class="sys-stack">2025</p>
-          <h3 class="sys-title">Nombre del evento o logro</h3>
+          <h3 class="sys-title">Festigame 2025</h3>
           <p class="sys-label">rol</p>
-          <p class="sys-goal">Tu rol en el evento: desarrolladora, expositora, programadora…</p>
+          <p class="sys-goal">Programador principal</p>
           <p class="sys-label">descripción</p>
-          <p class="sys-goal">Cuenta en pocas líneas qué hiciste, qué mostraste y qué aprendiste o cómo te fue.</p>
+          <p class="sys-goal">Meant To Die fue presentado en Festigame 2025, un festival de videojuegos y cultura pop en Chile. Fue una oportunidad para mostrar el juego a un público más amplio, recibir retroalimentación y aprender sobre la industria de los videojuegos en Chile.</p>
         </div>
       </article>
 
@@ -182,9 +255,13 @@
       <span class="section-num mono">04</span>
       <h2 class="section-title">Sobre mí</h2>
     </div>
-    <p class="about-text">Soy estudiante de <strong>4 años</strong> de Ingeniería en Realidad Virtual en la Universidad Bernardo O’Higgins, enfocado principalmente en programación, Game Developer y desarrollo de videojuegos. También exploro el desarrollo Full Stack, trabajando tanto con backend como frontend.</p>
+    <div class = "about-grid">
+      <img class = "about-photo" src="Files/Imagenes/Foto_Perfil.jpg" alt="Foto de perfil de Benjamin Bravo">
+      <div class = "about-body"></div>
+      <p class="about-text">Soy estudiante de <strong>4 años</strong> de Ingeniería en Realidad Virtual en la Universidad Bernardo O’Higgins, enfocado principalmente en programación, Game Developer y desarrollo de videojuegos. También exploro el desarrollo Full Stack, trabajando tanto con backend como frontend.</p>
     <p class="about-text">Me considero una persona prolija, organizada y detallista al programar. Me gusta mantener un código limpio y estructurado, buscando que cada sistema sea fácil de entender, mantener y mejorar.</p>
     <p class="about-text">Además de desarrollar, disfruto liderar proyectos y convertir ideas en experiencias reales, siempre buscando aprender algo nuevo en el proceso.</p>
+    </div>
   </div>
 </section>
 
@@ -240,8 +317,8 @@
           <button class="g-thumb" type="button" data-type="image" data-src="Files/Imagenes/MTD_4.png" data-alt="Meant To Die, captura 4"><img src="Files/Imagenes/MTD_4.png" alt=""></button>
         </div>
       </div>
-      <p class="modal-desc">Meant To Die es un juego de <strong>terror psicologico y suspenso en primera persona</strong>, que buscan una Experiencia que les genére inmersión total a través del estilo PSX, la falta de interfaz y mecánicas centradas en Mantener la cordura para no morir y evitar alucinaciones, deberas sobrevivir a los demonios internos del protagonista debido a sus brotes mientras sus propias acciones pueden llevarlo a la muerte.</p>
-      <p class="modal-desc">Meant To Die Fue presentado en <strong>Expogame 2023</strong> y <strong>Festigame 2025</strong>.</p>
+      <p class="modal-desc">Meant To Die es un juego de <strong>terror psicológico y suspenso en primera persona</strong>, que buscan una experiencia que les genere inmersión total a través del estilo PSX, la falta de interfaz y mecánicas centradas en mantener la cordura para no morir y evitar alucinaciones, deberás sobrevivir a los demonios internos del protagonista debido a sus brotes mientras sus propias acciones pueden llevarlo a la muerte.</p>
+      <p class="modal-desc">Meant To Die fue presentado en <strong>Expogame 2023</strong> y <strong>Festigame 2025</strong>.</p>
       <div class="modal-tags">
         <span class="tag">Unity</span><span class="tag">C#</span>
       </div>
@@ -281,23 +358,6 @@
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-panel" onclick="closeOnBackdrop(event, 'modal-panel')">
-  <div class="modal-box">
-    <div class="modal-head">
-      <span class="fname">Roomix</span>
-      <button class="modal-close" onclick="closeModal('modal-panel')">cerrar ✕</button>
-    </div>
-    <div class="modal-body">
-      <p class="modal-desc">ROOMIX es una <strong>aplicación de realidad mixta</strong> en desarrollo orientada a permitir que las personas visualicen, coloquen y muevan muebles dentro de su propio espacio para experimentar cómo se verían antes de tomar una decisión.</p>
-      <div class="modal-tags">
-        <span class="tag">Unity</span><span class="tag">MR</span>
-      </div>
-      <div class="modal-links">
-        <a href="https://canva.link/ok3jjlzo2n136rm" target="_blank">ver presentación ↗</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- EXPERIENCIA -->
 <section class="row" id="experiencia">
@@ -311,7 +371,7 @@
       <div class="tl-date mono">2023 — hoy</div>
       <div class="tl-body">
         <h4>Estudiante Universitario En Ing. En Realidad Virtual y Diseño de Juegos Digitales</h4>
-        <div class="tl-org">Universidad Bernado O'Higgins</div>
+        <div class="tl-org">Universidad Bernardo O'Higgins</div>
       </div>
     </div>
 
@@ -320,7 +380,7 @@
       <div class="tl-body">
         <h4>SERCOTEC</h4>
         <div class="tl-org">Vinculación con el medio · UBO</div>
-        <p>Proyecto creado para el negocio "nombre del negocio" de la mano del programa de vinculación con el medio de la UBO.</p>
+        <p>Proyecto para "Weona ponte linda", una estética de uñas, dentro del programa de vinculación con el medio de la UBO. Modelé una Mano con dististos tipos de uñas en 3D y programé en Unity entre distintos tipos de uñas.</p>
       </div>
     </div>
   </div> 

@@ -148,24 +148,28 @@ document.querySelectorAll('.project-card').forEach(function(card){
   targets.forEach(function(el){ io.observe(el); });
 })();
 
-// Menú: resalta la sección que estás viendo
 (function(){
-  if(!('IntersectionObserver' in window)) return;
   var links = Array.prototype.slice.call(document.querySelectorAll('.topbar nav a'));
-  var map = {};
-  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
-  var spy = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        links.forEach(function(a){ a.classList.remove('active'); });
-        if(map[e.target.id]) map[e.target.id].classList.add('active');
-      }
+
+  function marcar(){
+    var actual = null;
+
+    // la última sección cuyo inicio ya pasó la línea de arriba
+    links.forEach(function(a){
+      var sec = document.querySelector(a.getAttribute('href'));
+      if(sec && sec.getBoundingClientRect().top <= 100) actual = a;
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  Object.keys(map).forEach(function(id){
-    var sec = document.getElementById(id);
-    if(sec) spy.observe(sec);
-  });
+
+    // si llegaste al final de la página, marca la última sección
+    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2){
+      actual = links[links.length - 1];
+    }
+
+    links.forEach(function(a){ a.classList.toggle('active', a === actual); });
+  }
+
+  window.addEventListener('scroll', marcar);
+  marcar();
 })();
 
 // Portada: la animación de entrada se repite al volver arriba
