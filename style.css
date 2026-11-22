@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
 
 :root {
   --bg: #0d0f11;
@@ -1143,5 +1143,56 @@ h1.name {
       opacity: 1;
       transform: none;
       transition: none;
+    }
+  }
+
+  .sys-title-game {
+    font-family:'Press Start 2P', monospace;
+    font-size: 18px;
+    color:var(--amber);
+    margin: 0;
+  }
+
+  .sys-subtitle-game {
+    font-size: 15px ;
+    color:var(--text-dim);
+    margin: 6px 0 24px;
+  }
+
+  #web-game .content{
+    max-width: 1600px;
+  }
+
+  .window-game {
+    margin: 16px 0;
+  }
+
+  .window-game iframe{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 2px solid #3e049b;
+    display: block;
+  }
+
+  .game-mobile {
+    display: none;
+    color: var(--text-dim);
+    font-size: 15px;
+    border: 1px solid var(--line);
+    padding: 12px 16px;
+    margin: 16px 0;
+  }
+
+  @media (max-width: 640px) {
+    .window-game {
+      display: none;
+    }
+
+    .game-mobile {
+      display: block;
+    }
+
+    .link-fullscreen{
+      display: none;
     }
   }
