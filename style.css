@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Newsreader:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
 
 :root {
   --bg: #0d0f11;
@@ -26,9 +26,13 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Newsreader', serif;
 }
 
 ::selection {
@@ -127,7 +131,7 @@ section {
 
 h1.name {
   font-size: clamp(38px, 6vw, 64px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.05;
   margin-bottom: 14px;
@@ -1208,7 +1212,7 @@ h1.name {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 13px;
   background: var(--bg-raised);      
-  border: 1px var(--line);         
+  border: 1px solid var(--line);         
   border-radius: 3px;   
   padding: 4px 10px;        
   white-space: nowrap; 
