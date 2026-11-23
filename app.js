@@ -1,3 +1,26 @@
+const FIRMAS = [
+  { obj: 'benjamin.', method: 'nickname', point: '.', prop: 'dev', equal: ' = ' , valor: '"Dark0Glow0"', comma: ';' },
+  { obj: 'benjamin.', method: 'nickname', point: '.', prop: 'game', equal: ' = ' , valor: '"BNK"', comma: ';'  }
+];
+
+function esperar(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function teclear(span, texto) {
+  for (let i = 0; i < texto.length; i++) {
+    span.textContent += texto[i];  
+    await esperar(80);  
+  }
+}
+
+async function borrar(span) {
+  while (span.textContent.length > 0) {
+    span.textContent = span.textContent.slice(0, -1);
+    await esperar(40);
+  }
+}
+
 function openModal(id) {
   document.getElementById(id).classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -189,3 +212,43 @@ document.querySelectorAll('.sys-media video').forEach(function (v) {
     document.querySelectorAll('.sys-media video').forEach(function (o) { if (o !== v) o.pause(); });
   });
 });
+
+async function animarFirma() {
+  const obj = document.getElementById('firma-obj');
+  const method = document.getElementById('firma-method');
+  const point = document.getElementById('firma-point');
+  const prop = document.getElementById('firma-prop');
+  const equal = document.getElementById('firma-equal');
+  const valor = document.getElementById('firma-valor');
+  const comma = document.getElementById('firma-comma');
+
+  while (true) {                       
+    for (const firma of FIRMAS) {      
+      await teclear(obj, firma.obj);
+      await esperar(500);
+      await teclear(method, firma.method);
+      await teclear(point, firma.point);
+      await esperar(500);
+      await teclear(prop, firma.prop);
+      await esperar(200);
+      await teclear(equal, firma.equal);
+      await esperar(500);
+      await teclear(valor, firma.valor);
+      await teclear(comma, firma.comma);
+
+      await esperar(3500);             
+
+      await borrar(comma);
+      await borrar(valor);
+      await borrar(equal);              
+      await borrar(prop);
+      await borrar(point);
+      await borrar(method);
+      await borrar(obj);
+
+      await esperar(400);              
+    }
+  }
+}
+
+animarFirma();

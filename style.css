@@ -90,30 +90,6 @@ section {
   z-index: 10;
 }
 
-.topbar .dots {
-  display: flex;
-  gap: 7px;
-}
-
-.dots span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dots span:nth-child(1) {
-  background: #d97b7b;
-}
-
-.dots span:nth-child(2) {
-  background: #e6b85c;
-}
-
-.dots span:nth-child(3) {
-  background: #6fbf73;
-}
-
 .topbar nav {
   display: flex;
   gap: 22px;
@@ -1195,4 +1171,55 @@ h1.name {
     .link-fullscreen{
       display: none;
     }
+
+    .topbar nav{
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 20px;
+    min-width: 0;
+    scrollbar-width: none;
+    }
+
+    .topbar{
+      flex-wrap: wrap;
+      height: auto;
+      padding: 10px 16px;
+      gap: 8px;
+    }
+
+    .firma,
+    .topbar nav {
+      width: 100%;
+    }
   }
+
+
+  @keyframes parpadeo {
+  50% {
+    opacity: 0;   /* ¿cómo se ve el cursor a la mitad de la animación? */
+  }
+}
+
+.cursor {
+  animation: parpadeo 0.7s steps(1) infinite;
+}
+
+.firma {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  background: var(--bg-raised);      
+  border: 1px var(--line);         
+  border-radius: 3px;   
+  padding: 4px 10px;        
+  white-space: nowrap; 
+  min-width: auto; 
+}
+
+#firma-obj   { color: var(--text); }
+#firma-method { color: #0077ff; } 
+#firma-point { color: var(--text); }  
+#firma-prop  { color: var(--amber); } 
+#firma-equal { color: var(--text); } 
+#firma-valor { color: #ffa600; }
+#firma-comma { color: var(--text); }   
+.cursor      { color: #01ad0f; }
